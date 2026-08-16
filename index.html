@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compagnie Résonance — Cours de Danse à Saint-Chamond</title>
+  <style>
+    :root {
+      /* Palette extraite de la charte visuelle */
+      --primary-blue: #133955;   /* Bleu Nuit (Bannière / Titres) */
+      --accent-teal: #0d5f60;    /* Vert Émeraude / Canard (Accents / Cartes) */
+      --accent-orange: #d97724;  /* Ocre / Orange chaleureux (Boutons / Badges / Sous-titres) */
+      --light-bg: #f9f7f2;       /* Fond Crème / Écru doux */
+      --card-bg: #ffffff;       /* Blanc pur pour les cartes */
+      --text-dark: #222222;     /* Texte principal */
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { 
+      font-family: system-ui, -apple-system, sans-serif; 
+      line-height: 1.6; 
+      color: var(--text-dark); 
+      background: var(--light-bg); 
+    }
+    
+    header { 
+      background: var(--primary-blue); 
+      color: white; 
+      padding: 1rem 2rem; 
+      position: sticky; 
+      top: 0; 
+      z-index: 100; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    header h1 { font-size: 1.4rem; font-weight: 700; letter-spacing: 0.5px; }
+    nav a { color: white; text-decoration: none; margin-left: 1.5rem; font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: var(--accent-orange); }
+
+    /* Section Bannière / Hero avec l'image */
+    .hero { 
+      background: linear-gradient(rgba(19, 57, 85, 0.4), rgba(19, 57, 85, 0.4)), url('Gemini_Generated_Image_k38g24k38g24k38g.png') center/cover no-repeat; 
+      color: white; 
+      text-align: center; 
+      padding: 1rem 1rem; 
+    }
+    .hero h2 { 
+      font-size: 2.8rem; 
+      margin-bottom: 0.5rem; 
+      text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    }
+    .hero p {
+      font-size: 1.3rem;
+      font-style: italic;
+      color: #f1f5f9;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+    .btn { 
+      display: inline-block; 
+      background: var(--accent-orange); 
+      color: white; 
+      padding: 0.8rem 1.8rem; 
+      text-decoration: none; 
+      border-radius: 25px; 
+      font-weight: bold; 
+      margin-top: 1.5rem; 
+      box-shadow: 0 4px 10px rgba(217, 119, 36, 0.3);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn:hover {
+      background: #c2651b;
+      transform: translateY(-2px);
+    }
+
+    section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+    h2.section-title { 
+      text-align: center; 
+      font-size: 2.2rem; 
+      color: var(--primary-blue); 
+      margin-bottom: 2rem; 
+      position: relative;
+    }
+    h2.section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--accent-orange);
+      margin: 0.5rem auto 0;
+      border-radius: 2px;
+    }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .card { 
+      background: var(--card-bg); 
+      padding: 1.8rem; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04); 
+      border-top: 4px solid var(--accent-teal);
+    }
+    .card h3 { color: var(--accent-teal); margin-bottom: 0.5rem; font-size: 1.3rem; }
+    .card ul { margin-left: 1.2rem; margin-top: 0.5rem; color: #444; }
+
+    /* Carte de la section Actualités */
+    .news-card {
+      background: var(--card-bg);
+      border: 2px solid var(--accent-orange);
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(217, 119, 36, 0.1);
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .news-badge {
+      display: inline-block;
+      background: var(--accent-orange);
+      color: white;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    /* Tableau du planning */
+    table { 
+      width: 100%; 
+      max-width: 650px; 
+      margin: 0 auto; 
+      border-collapse: collapse; 
+      background: var(--card-bg); 
+      border-radius: 10px; 
+      overflow: hidden; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+    }
+    th, td { padding: 1.1rem 1.5rem; text-align: left; border-bottom: 1px solid #eee; }
+    th { background: var(--primary-blue); color: white; font-size: 1.05rem; }
+    tr:nth-child(even) { background-color: #fdfdfd; }
+
+    footer { 
+      background: var(--primary-blue); 
+      color: white; 
+      text-align: center; 
+      padding: 2rem; 
+      margin-top: 4rem; 
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Compagnie Résonance</h1>
+    <nav>
+      <a href="#actualite">Actualités</a>
+      <a href="#danses">Nos Danses</a>
+      <a href="#planning">Planning</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+ </br>
+ </br>
+  </br>
+ </br>
+  </br>
+ </br>
+  </br>
+ </br>
+  </br>
+ </br>
+  </br>
+ </br>
+        <a href="#contact" class="btn">S'inscrire à un cours d'essai</a>
+  </section>
+
+  <!-- Section Actualité -->
+  <section id="actualite">
+    <h2 class="section-title">Actualités</h2>
+    <div class="news-card">
+      <span class="news-badge">Rentrée 2026</span>
+      <h3 style="color: var(--primary-blue); font-size: 1.5rem;">Reprise des cours de danse</h3>
+      <p style="font-size: 1.1rem; margin-top: 0.8rem; color: #444;">
+        La reprise des cours aura lieu le <strong>lundi 07 septembre</strong> !
+      </p>
+      <p style="margin-top: 1rem; font-weight: bold; color: var(--accent-orange); font-size: 1.1rem;">
+        🎉 Profitez de 2 semaines d'essai gratuites pour découvrir nos disciplines sans engagement !
+      </p>
+    </div>
+  </section>
+
+  <section id="danses">
+    <h2 class="section-title">Les Danses Enseignées</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Danses de Bal</h3>
+        <p>Apprenez les grands classiques des danses de salon :</p>
+        <ul>
+          <li>Valse</li>
+          <li>Paso Doble</li>
+          <li>FoxTrot</li>
+          <li>Tango</li>
+          <li>Boléro</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Rock & Swing</h3>
+        <p>Rythmes dynamiques et modernes :</p>
+        <ul>
+          <li>Rock</li>
+          <li>Balboa</li>
+          <li>West Coast Swing</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Danses Latines & Sociales</h3>
+        <p>Pour le plaisir d'évoluer en rythme à deux :</p>
+        <ul>
+          <li>Bachata</li>
+          <li>Cha-cha-cha</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="planning">
+    <h2 class="section-title">Planning Hebdomadaire</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Jour</th>
+          <th>Horaire</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Lundi</strong></td>
+          <td>18h00 - 21h00</td>
+        </tr>
+        <tr>
+          <td><strong>Mardi</strong></td>
+          <td>17h45 - 19h45</td>
+        </tr>
+        <tr>
+          <td><strong>Mercredi</strong></td>
+          <td>18h00 - 21h00</td>
+        </tr>
+        <tr>
+          <td><strong>Jeudi</strong></td>
+          <td>18h45 - 21h15</td>
+        </tr>
+        <tr>
+          <td><strong>Vendredi</strong></td>
+          <td>18h00 - 20h00</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="tarifs">
+    <h2 class="section-title">Tarifs Annuels</h2>
+    <div class="grid">
+      <div class="card" style="border-top-color: var(--accent-orange);">
+        <h3 style="color: var(--accent-orange);">Formule Individuelle</h3>
+        <p style="font-size: 1.5rem; font-weight: bold; color: var(--primary-blue); margin: 0.5rem 0;">320 € / an</p>
+        <p>Accès à 1 cours par semaine + adhésion à l'association.</p>
+      </div>
+      <div class="card" style="border-top-color: var(--accent-teal);">
+        <h3>Pass Multi-cours</h3>
+        <p style="font-size: 1.5rem; font-weight: bold; color: var(--primary-blue); margin: 0.5rem 0;">420 € / an</p>
+        <p>Accès à plusieurs disciplines hebdomadaires + adhésion à l'association.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact & Localisation</h2>
+    <div class="card" style="text-align: center; max-width: 600px; margin: 0 auto; border-top-color: var(--primary-blue);">
+      <h3 style="color: var(--primary-blue);">Compagnie Résonance</h3>
+      <p style="margin-top: 1rem;"><strong>Adresse :</strong><br>
+		<a href="https://www.google.com/maps/place/Compagnie+R%C3%A9sonance/@45.4775261,4.5108768,802m/data=!3m1!1e3!4m15!1m8!3m7!1s0x47f500590cd24efd:0x41a8633f0efa28a3!2s20+Rue+de+la+R%C3%A9publique,+42400+Saint-Chamond!3b1!8m2!3d45.4775224!4d4.5134517!16s%2Fg%2F11crtb1l98!3m5!1s0x47f5018f8958319f:0xb7556bdaf89458ef!8m2!3d45.4774976!4d4.513456!16s%2Fg%2F11h6r39412?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           style="color: var(--accent-orange); text-decoration: none; font-weight: 500;">
+          20 Rue de la République<br>42400 Saint-Chamond 📍
+        </a>
+		</p>
+      <p style="margin-top: 1rem;">
+		  <strong>Téléphone :</strong> 
+		  <a href="tel:+33650569584" style="color: var(--accent-orange); text-decoration: none; font-weight: bold;">06 50 56 95 84</a> 
+		  ou 
+		  <a href="tel:+33781369913" style="color: var(--accent-orange); text-decoration: none; font-weight: bold;">07 81 36 99 13</a>
+		</p>
+      <p><strong>Email :</strong> <a href="mailto:resonancecompagnie@gmail.com?subject=Demande%20d'information"" style="color: var(--accent-orange); text-decoration: none; font-weight: bold;">resonancecompagnie@gmail.com</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Compagnie Résonance — 20 Rue de la République, 42400 Saint-Chamond</p>
+  </footer>
+
+</body>
+</html>
